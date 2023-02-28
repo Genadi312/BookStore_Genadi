@@ -21,7 +21,7 @@ namespace BookStore.Controllers
         [HttpGet(Name = "GetAllAuthors")]
         public IEnumerable<Author> GetAll()
         {
-            return _authorService.GetAll();
+            return authorService.GetAll();
 
         }
     }
