@@ -32,7 +32,7 @@ namespace BookStore.Controllers
             return _authorService.GetById(id);
         }
         [HttpPost("Add")]
-        public void Add(Author author)
+        public void Add([FromBody]Author author)
         {
             _authorService.Add(author);
         }
