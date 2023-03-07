@@ -1,6 +1,7 @@
 ﻿using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
-using BookStore.Models.Base;
+using BookStore.Models.Models;
+using BookStore.Models.Models.Requests;
 
 namespace BookStore.BL.Services
 {
@@ -13,9 +14,18 @@ namespace BookStore.BL.Services
             _authorRepository= authorRepository;
         }
 
-        public void Add(Author author)
+        public void Add(AddAuthorRequest authorRequest)
         {
-            _authorRepository.Add(author);
+            _authorRepository.Add(new Author()
+            {
+                Name= authorRequest.Name,
+                Bio = authorRequest.Bio,
+            });
+        }
+
+        public void Delete(int id)
+        {
+            _authorRepository.Delete(id);
         }
 
         public IEnumerable<Author> GetAll()
@@ -26,6 +36,11 @@ namespace BookStore.BL.Services
         public Author GetById(int id)
         {
             return _authorRepository.GetById(id);
+        }
+
+        public void Update(Author author)
+        {
+            _authorRepository.Update(author);
         }
     }
 }
