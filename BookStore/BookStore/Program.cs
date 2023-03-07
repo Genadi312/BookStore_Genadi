@@ -14,6 +14,8 @@ namespace BookStore
             // Add services to the container.
             builder.Services.AddSingleton<IAuthorServices, AuthorService>();
             builder.Services.AddSingleton<IAuthorRepository, AuthorInMemoryRepository>();
+            builder.Services.AddSingleton<IBookServices, BookService>();
+            builder.Services.AddSingleton<IBookRepository, BookInMemoryRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

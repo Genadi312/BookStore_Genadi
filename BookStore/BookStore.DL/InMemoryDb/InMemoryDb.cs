@@ -18,5 +18,21 @@ namespace BookStore.DL.InMemoryDb
                 Name = "Stavri"
             }
         };
+
+        public static List<Book> Books = new List<Book>()
+        {
+            new Book()
+            {
+                Id= 1,
+                Name = "Warcraft: Before the Storm",
+                AuthorId = 1,
+            },
+            new Book()
+            {
+                Id= 2,
+                Name = "Warcraft: Durotan",
+                AuthorId = 2,
+            }
+        };
     }
 }
