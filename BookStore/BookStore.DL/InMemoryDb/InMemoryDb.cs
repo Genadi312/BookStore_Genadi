@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using BookStore.Models.Base;
+using BookStore.Models.Models;
 
 namespace BookStore.DL.InMemoryDb
 {

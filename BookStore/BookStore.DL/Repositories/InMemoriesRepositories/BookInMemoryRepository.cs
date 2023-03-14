@@ -1,5 +1,5 @@
 ﻿using BookStore.DL.Interfaces;
-using BookStore.Models.Base;
+using BookStore.Models.Models;
 
 namespace BookStore.DL.Repositories.InMemoriesRepositories
 {

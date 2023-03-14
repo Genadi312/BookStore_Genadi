@@ -4,6 +4,6 @@ namespace BookStore.Models.Models
 {
     public class Author : Person
     {
-        public Author() { }
+        public string Bio { get; set; }
     }
 }
