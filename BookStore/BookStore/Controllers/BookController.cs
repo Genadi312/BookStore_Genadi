@@ -1,5 +1,5 @@
 ﻿using BookStore.BL.Interfaces;
-using BookStore.Models.Base;
+using BookStore.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers

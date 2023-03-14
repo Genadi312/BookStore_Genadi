@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
-using BookStore.Models.Base;
+using BookStore.Models.Models;
 
 namespace BookStore.BL.Services
 {
