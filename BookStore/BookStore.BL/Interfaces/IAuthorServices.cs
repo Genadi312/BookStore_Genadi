@@ -11,7 +11,7 @@ namespace BookStore.BL.Interfaces
 
         void Add(AddAuthorRequest author);
 
-        void Update(Author author);
+        void Update(UpdateAuthorRequest author);
 
         void Delete(int id);
 

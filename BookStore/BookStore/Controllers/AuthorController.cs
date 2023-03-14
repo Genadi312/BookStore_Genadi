@@ -41,7 +41,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("Update")]
-        public void Update([FromBody]Author author)
+        public void Update([FromBody]UpdateAuthorRequest author)
         {
             _authorService.Update(author);
         }

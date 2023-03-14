@@ -5,7 +5,7 @@ namespace BookStore.DL.Repositories.InMemoriesRepositories
 {
     public class BookInMemoryRepository : IBookRepository
     {
-        
+
         void IBookRepository.Add(Book book)
         {
             throw new NotImplementedException();
@@ -37,6 +37,16 @@ namespace BookStore.DL.Repositories.InMemoriesRepositories
             {
                 bookForUpdate.Name = book.Name;
             }
+        }
+
+        public IEnumerable<Book> GetAllByAuthorId(int authorId)
+        {
+            return InMemoryDb.InMemoryDb.Books.Where(book => book.AuthorId == authorId);
+        }
+
+        public IEnumerable<Book> GetAllBooksByReleaseDate(int releaseDate)
+        {
+            return InMemoryDb.InMemoryDb.Books.Where(book => book.ReleaseDate == releaseDate);
         }
     }
 }
