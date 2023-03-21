@@ -2,6 +2,8 @@ using BookStore.BL.Interfaces;
 using BookStore.BL.Services;
 using BookStore.DL.Interfaces;
 using BookStore.DL.Repositories.InMemoriesRepositories;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 
 namespace BookStore
 {
@@ -9,7 +11,11 @@ namespace BookStore
     {
         public static void Main(string[] args)
         {
+            var logger = new LoggerConfiguration().Enrich.FromLogContext().WriteTo.Console(theme: AnsiConsoleTheme.Code).CreateLogger();
+
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Logging.AddSerilog(logger);
 
             // Add services to the container.
             builder.Services.AddSingleton<IAuthorServices, AuthorService>();

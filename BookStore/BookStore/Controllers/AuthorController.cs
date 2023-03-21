@@ -25,7 +25,6 @@ namespace BookStore.Controllers
         public IEnumerable<Author> GetAll()
         {
             return _authorService.GetAll();
-
         }
 
         [HttpGet("GetById")]
@@ -35,13 +34,13 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("Add")]
-        public void Add([FromBody]AddAuthorRequest authorRequest)
+        public void Add([FromBody] AddAuthorRequest authorRequest)
         {
             _authorService.Add(authorRequest);
         }
 
         [HttpPost("Update")]
-        public void Update([FromBody]UpdateAuthorRequest author)
+        public void Update([FromBody] UpdateAuthorRequest author)
         {
             _authorService.Update(author);
         }
