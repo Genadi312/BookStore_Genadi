@@ -2,6 +2,7 @@
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
 using BookStore.Models.Models.Responses;
+using Microsoft.Extensions.Logging;
 
 namespace BookStore.BL.Services
 {
@@ -9,11 +10,13 @@ namespace BookStore.BL.Services
     {
         private readonly IAuthorRepository _authorRepository;
         private readonly IBookRepository _bookRepository;
+        private readonly ILogger<LibraryServices> _logger;
 
-        public LibraryServices(IAuthorRepository authorRepository, IBookRepository bookRepository)
+        public LibraryServices(IAuthorRepository authorRepository, IBookRepository bookRepository, ILogger<LibraryServices> logger)
         {
             _authorRepository = authorRepository;
             _bookRepository = bookRepository;
+            _logger = logger;
         }
         public GetAllBooksByAuthorResponse GetAllBooksByAuthorId(int authorId)
         {
@@ -22,13 +25,16 @@ namespace BookStore.BL.Services
 
             if (author != null)
             {
+                _logger.LogError($"GetAllByAuthorId error");
                 books = _bookRepository.GetAllByAuthorId(authorId);
             }
             return new GetAllBooksByAuthorResponse()
             {
+
                 Author = author,
                 Books = books
             };
+            
         }
 
 
