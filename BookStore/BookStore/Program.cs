@@ -1,7 +1,11 @@
 using BookStore.BL.Interfaces;
 using BookStore.BL.Services;
 using BookStore.DL.Interfaces;
-using BookStore.DL.Repositories.InMemoriesRepositories;
+using BookStore.DL.Repositories.MongoDb;
+using BookStore.Models.Configurations;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
@@ -17,14 +21,17 @@ namespace BookStore
 
             builder.Logging.AddSerilog(logger);
 
+            builder.Services.Configure<MongoDbConfiguration>(builder.Configuration.GetSection(nameof(MongoDbConfiguration)));
+
             // Add services to the container.
             builder.Services.AddSingleton<IAuthorServices, AuthorService>();
-            builder.Services.AddSingleton<IAuthorRepository, AuthorInMemoryRepository>();
+            builder.Services.AddSingleton<IAuthorRepository, AuthorMongoRepository>();
             builder.Services.AddSingleton<IBookServices, BookService>();
-            builder.Services.AddSingleton<IBookRepository, BookInMemoryRepository>();
             builder.Services.AddSingleton<ILibraryServices, LibraryServices>();
 
             builder.Services.AddAutoMapper(typeof(Program));
+
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

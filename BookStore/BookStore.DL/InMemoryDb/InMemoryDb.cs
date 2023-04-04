@@ -9,12 +9,10 @@ namespace BookStore.DL.InMemoryDb
         {
             new Author()
             {
-                Id= 1,
                 Name = "Pesho"
             },
             new Author()
             {
-                Id= 2,
                 Name = "Stavri"
             }
         };
