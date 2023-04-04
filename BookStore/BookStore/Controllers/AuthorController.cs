@@ -22,27 +22,27 @@ namespace BookStore.Controllers
         }
 
         [HttpGet("GetAllAuthors")]
-        public IEnumerable<Author> GetAll()
+        public async Task <IEnumerable<Author>> GetAll()
         {
-            return _authorService.GetAll();
+            return await _authorService.GetAll();
         }
 
         [HttpGet("GetById")]
-        public Author GetById(int id)
+        public async Task <Author> GetById(int id)
         {
-            return _authorService.GetById(id);
+            return await _authorService.GetById(id);
         }
 
         [HttpPost("Add")]
-        public void Add([FromBody] AddAuthorRequest authorRequest)
+        public async Task Add([FromBody] AddAuthorRequest authorRequest)
         {
-            _authorService.Add(authorRequest);
+            await _authorService.Add(authorRequest);
         }
 
         [HttpPost("Update")]
-        public void Update([FromBody] UpdateAuthorRequest author)
+        public async Task Update([FromBody] UpdateAuthorRequest author)
         {
-            _authorService.Update(author);
+            await _authorService.Update(author);
         }
 
         [HttpDelete("Delete")]
