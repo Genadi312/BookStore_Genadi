@@ -9,8 +9,8 @@ namespace BookStore.BL.Interfaces
 {
     public interface ILibraryServices
     {
-        public Task <GetAllBooksByAuthorResponse> GetAllBooksByAuthorId(int authorId);
+        public Task <GetAllBooksByAuthorResponse> GetAllBooksByAuthorId(Guid authorId);
 
-        public Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, int authorId);
+        public Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId);
     }
 }

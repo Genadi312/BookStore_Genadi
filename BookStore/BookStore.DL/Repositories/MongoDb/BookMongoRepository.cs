@@ -38,28 +38,28 @@ namespace BookStore.DL.Repositories.MongoDb
             return await _books.Find(book => true).ToListAsync();
         }
 
-        public async Task <IEnumerable<Book>> GetAllBooksByReleaseDate(int releaseDate)
+        public async Task<IEnumerable<Book>> GetAllBooksByReleaseDate(int releaseDate)
         {
-            return InMemoryDb.InMemoryDb.Books.Where(book => book.ReleaseDate == releaseDate);
+            return (IEnumerable<Book>)await _books.Find(x => x.ReleaseDate == releaseDate).FirstOrDefaultAsync();
         }
 
-        public async Task <IEnumerable<Book>> GetAllByAuthorId(int authorId)
+        public async Task<IEnumerable<Book>> GetAllByAuthorId(Guid authorId)
         {
-            return InMemoryDb.InMemoryDb.Books.Where(book => book.AuthorId == authorId);
+            return (IEnumerable<Book>) await _books.Find(x => x.AuthorId == authorId).FirstOrDefaultAsync();
         }
 
-        public async Task<Book> GetById(int id)
+        public async Task<Book?> GetById(int id)
         {
             return await _books.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public Task Update(Book book)
+        public async Task Update(Book book)
         {
             var filter = Builders<Book>.Filter.Eq(s => s.Id, book.Id);
             var update = Builders<Book>.Update.Set(s => s.Name, book.Name);
-            return _books.UpdateOneAsync(filter, update);
+            await _books.UpdateOneAsync(filter, update);
         }
-       
 
-}
+
+    }
 }

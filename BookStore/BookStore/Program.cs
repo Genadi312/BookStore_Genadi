@@ -8,6 +8,8 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace BookStore
 {
@@ -28,6 +30,7 @@ namespace BookStore
             builder.Services.AddSingleton<IAuthorRepository, AuthorMongoRepository>();
             builder.Services.AddSingleton<IBookServices, BookService>();
             builder.Services.AddSingleton<ILibraryServices, LibraryServices>();
+            builder.Services.AddSingleton<IBookRepository,BookMongoRepository>();
 
             builder.Services.AddAutoMapper(typeof(Program));
 
@@ -37,6 +40,9 @@ namespace BookStore
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+            builder.Services.AddValidatorsFromAssemblyContaining(typeof(Program));
 
             var app = builder.Build();
 

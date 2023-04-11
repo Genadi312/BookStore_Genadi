@@ -23,14 +23,12 @@ namespace BookStore.DL.InMemoryDb
             {
                 Id= 1,
                 Name = "Warcraft: Before the Storm",
-                AuthorId = 1,
                 ReleaseDate = 2018,
             },
             new Book()
             {
                 Id= 2,
                 Name = "Warcraft: Durotan",
-                AuthorId = 2,
                 ReleaseDate = 2016,
             }
         };

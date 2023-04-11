@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookStore.BL.Interfaces;
+﻿using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
 
@@ -21,10 +16,10 @@ namespace BookStore.BL.Services
 
         public async Task Add(Book book)
         {
-            _bookRepository.Add(book);
+            await _bookRepository.Add(book);
         }
 
-        public async Task<Book> GetById(int id)
+        public async Task<Book?> GetById(int id)
         {
             return await _bookRepository.GetById(id);
         }

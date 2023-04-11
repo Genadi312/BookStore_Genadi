@@ -11,7 +11,7 @@ namespace BookStore.DL.Interfaces
     {
         Task <IEnumerable<Book>> GetAll();
 
-        Task <Book> GetById(int id);
+        Task <Book?> GetById(int id);
         
         Task Add(Book book);
 
@@ -19,7 +19,7 @@ namespace BookStore.DL.Interfaces
 
         Task Delete(int id);
 
-        Task <IEnumerable<Book>> GetAllByAuthorId(int authorId);
+        Task <IEnumerable<Book>> GetAllByAuthorId(Guid authorId);
 
         Task <IEnumerable<Book>> GetAllBooksByReleaseDate(int releaseDate);
     }

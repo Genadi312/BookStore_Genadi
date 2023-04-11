@@ -14,18 +14,32 @@ namespace BookStore.Controllers
         {
             _bookService = bookService;
         }
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("GetAllBooks")]
-        public async Task <IEnumerable<Book>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return await _bookService.GetAll();
+            var result = await _bookService.GetAll();
 
+            if (result != null && result.Any()) return Ok(result);
+
+            return NotFound();
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("GetById")]
-        public async Task <Book> GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return await _bookService.GetById(id);
+            if (id == 0) return BadRequest(id);
+
+            var  result = await _bookService.GetById(id);
+
+            if (result != null) return Ok(result);
+
+            return NotFound();
+            
         }
 
         [HttpPost("Add")]
@@ -41,9 +55,9 @@ namespace BookStore.Controllers
         }
 
         [HttpDelete("Delete")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _bookService.Delete(id);
+            await _bookService.Delete(id);
         }
     }
 }

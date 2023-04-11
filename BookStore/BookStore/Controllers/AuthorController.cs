@@ -28,7 +28,7 @@ namespace BookStore.Controllers
         }
 
         [HttpGet("GetById")]
-        public async Task <Author> GetById(int id)
+        public async Task <Author> GetById(Guid id)
         {
             return await _authorService.GetById(id);
         }
@@ -46,7 +46,7 @@ namespace BookStore.Controllers
         }
 
         [HttpDelete("Delete")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _authorService.Delete(id);
         }

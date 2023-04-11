@@ -11,7 +11,7 @@ namespace BookStore.BL.Interfaces
     {
         Task <IEnumerable<Book>> GetAll();
 
-        Task <Book> GetById(int id);
+        Task <Book?> GetById(int id);
 
         Task Add(Book book);
 

@@ -18,9 +18,9 @@ namespace BookStore.BL.Services
             _bookRepository = bookRepository;
             _logger = logger;
         }
-        public async Task <GetAllBooksByAuthorResponse> GetAllBooksByAuthorId(int authorId)
+        public async Task <GetAllBooksByAuthorResponse> GetAllBooksByAuthorId(Guid authorId)
         {
-            var author = _authorRepository.GetById(authorId);
+            var author = await _authorRepository.GetById(authorId);
             var books = Enumerable.Empty<Book>();
 
             if (author != null)
@@ -31,7 +31,7 @@ namespace BookStore.BL.Services
             return new GetAllBooksByAuthorResponse()
             {
 
-                Author = author.Result,
+                Author = author,
                 Books = books
             };
             
@@ -39,7 +39,7 @@ namespace BookStore.BL.Services
 
 
 
-        public async Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, int authorId)
+        public async Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId)
         {
             var author = _authorRepository.GetById(authorId);
             var books = Enumerable.Empty<Book>();
