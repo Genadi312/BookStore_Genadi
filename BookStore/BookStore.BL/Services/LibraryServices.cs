@@ -39,19 +39,19 @@ namespace BookStore.BL.Services
 
 
 
-        public async Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId)
-        {
-            var author = _authorRepository.GetById(authorId);
-            var books = Enumerable.Empty<Book>();
-            if (releaseDate != null)
-            {
-                books = await _bookRepository.GetAllBooksByReleaseDate(releaseDate);
-            }
-            return new GetAllBooksByReleaseDate()
-            {
-                Author = await author,
-                Books = books
-            };
-        }
+        //public async Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId)
+        //{
+        //    var author = _authorRepository.GetById(authorId);
+        //    var books = Enumerable.Empty<Book>();
+        //    if (releaseDate != null)
+        //    {
+        //        books = await _bookRepository.GetAllBooksByReleaseDate(releaseDate);
+        //    }
+        //    return new GetAllBooksByReleaseDate()
+        //    {
+        //        Author = await author,
+        //        Books = books
+        //    };
+        //}
     }
 }

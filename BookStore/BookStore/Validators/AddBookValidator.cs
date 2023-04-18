@@ -7,11 +7,11 @@ namespace BookStore.Validators
     {
         public AddBookValidator()
         {
-            RuleFor(x => x.Name).NotNull()
+            RuleFor(x => x.Title).NotNull()
                 .NotEmpty().
                 WithMessage("Bio cannot be empty!");
 
-            RuleFor(x => x.Name.Length)
+            RuleFor(x => x.Title.Length)
                 .NotNull()
                 .NotEmpty();
         }
