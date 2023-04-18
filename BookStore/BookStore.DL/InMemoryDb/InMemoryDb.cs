@@ -1,5 +1,4 @@
-﻿using System.Net;
-using BookStore.Models.Models;
+﻿using BookStore.Models.Models;
 
 namespace BookStore.DL.InMemoryDb
 {
@@ -21,15 +20,15 @@ namespace BookStore.DL.InMemoryDb
         {
             new Book()
             {
-                Id= 1,
-                Name = "Warcraft: Before the Storm",
-                ReleaseDate = 2018,
+                
+                Title = "Warcraft: Before the Storm",
+                //ReleaseDate = 2018,
             },
             new Book()
             {
-                Id= 2,
-                Name = "Warcraft: Durotan",
-                ReleaseDate = 2016,
+                
+                Title = "Warcraft: Durotan",
+               //ReleaseDate = 2016,
             }
         };
     }

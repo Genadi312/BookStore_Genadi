@@ -10,6 +10,8 @@ using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 using FluentValidation.AspNetCore;
 using FluentValidation;
+using BookStore.Extensions;
+using BookStore.HealthChecks;
 
 namespace BookStore
 {
@@ -41,6 +43,9 @@ namespace BookStore
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("MongoDB");
+
+
             builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
             builder.Services.AddValidatorsFromAssemblyContaining(typeof(Program));
 
@@ -52,6 +57,8 @@ namespace BookStore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.RegisterHealthChecks();
 
             app.UseHttpsRedirection();
 

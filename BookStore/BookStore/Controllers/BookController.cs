@@ -30,9 +30,9 @@ namespace BookStore.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("GetById")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            if (id == 0) return BadRequest(id);
+            if (id == null) return BadRequest(id);
 
             var  result = await _bookService.GetById(id);
 
@@ -55,7 +55,7 @@ namespace BookStore.Controllers
         }
 
         [HttpDelete("Delete")]
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
             await _bookService.Delete(id);
         }

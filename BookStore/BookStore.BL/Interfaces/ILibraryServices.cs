@@ -11,6 +11,6 @@ namespace BookStore.BL.Interfaces
     {
         public Task <GetAllBooksByAuthorResponse> GetAllBooksByAuthorId(Guid authorId);
 
-        public Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId);
+        //public Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId);
     }
 }

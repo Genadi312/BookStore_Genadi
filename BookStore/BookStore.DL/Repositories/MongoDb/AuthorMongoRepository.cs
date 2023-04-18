@@ -2,6 +2,7 @@
 using BookStore.Models.Configurations;
 using BookStore.Models.Models;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace BookStore.DL.Repositories.MongoDb
@@ -15,8 +16,12 @@ namespace BookStore.DL.Repositories.MongoDb
         {
             var client = new MongoClient(mongoConfig.CurrentValue.ConnectionString);
             var database = client.GetDatabase(mongoConfig.CurrentValue.DatabaseName);
-
-            _authors = database.GetCollection<Author>($"{ nameof(Author)}-G.C.");
+            var collectionSettings = new MongoCollectionSettings
+            {
+                GuidRepresentation = GuidRepresentation.Standard
+            };
+            _authors = database
+                .GetCollection<Author>(nameof(Author), collectionSettings);
         }
 
 
@@ -37,7 +42,10 @@ namespace BookStore.DL.Repositories.MongoDb
 
         public async Task<Author> GetById(Guid id)
         {
-            return await _authors.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var item = await _authors
+                .Find(Builders<Author>.Filter.Eq("_id", id))
+                .FirstOrDefaultAsync();
+            return item;
         }
 
         public async Task Update(Author author)
