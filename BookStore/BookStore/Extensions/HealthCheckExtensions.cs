@@ -24,7 +24,7 @@ namespace BookStore.Extensions
                         }),
                        HealthCheckDuration = report.TotalDuration
                     };
-                    await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(response,Formatting.Indented));
                 }
             });
         }

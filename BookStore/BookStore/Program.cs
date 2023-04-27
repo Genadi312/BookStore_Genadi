@@ -43,8 +43,9 @@ namespace BookStore
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("MongoDB");
-
+            builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("MongoDB").AddUrlGroup(new Uri("https://google.bg"), "My Service");
+            builder.Services.AddHealthChecks().AddCheck<BookCheck>("BookCheck");
+            
 
             builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
             builder.Services.AddValidatorsFromAssemblyContaining(typeof(Program));
@@ -63,7 +64,6 @@ namespace BookStore
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

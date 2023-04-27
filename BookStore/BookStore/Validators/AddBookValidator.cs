@@ -9,11 +9,7 @@ namespace BookStore.Validators
         {
             RuleFor(x => x.Title).NotNull()
                 .NotEmpty().
-                WithMessage("Bio cannot be empty!");
-
-            RuleFor(x => x.Title.Length)
-                .NotNull()
-                .NotEmpty();
+                WithMessage("Title cannot be empty!");
         }
     }
 }
