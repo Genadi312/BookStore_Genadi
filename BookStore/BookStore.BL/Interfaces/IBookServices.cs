@@ -13,7 +13,7 @@ namespace BookStore.BL.Interfaces
 
         Task <Book?> GetById(Guid id);
 
-        Task Add(Book book);
+        Task <Book?>Add(Book author);
 
         Task Update(Book book);
 

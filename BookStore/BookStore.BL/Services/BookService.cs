@@ -10,26 +10,29 @@ namespace BookStore.BL.Services
         public readonly IAuthorServices _authorServices;
 
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(IAuthorServices authorServices, IBookRepository bookRepository)
         {
+            _authorServices = authorServices;
             _bookRepository = bookRepository;
         }
 
-        public async Task Add(Book book)
+        public async Task<Book?> Add(Book book)
         {
             book.Id = Guid.NewGuid();
-            var author = _authorServices.GetById(book.AuthorId);
 
-            if (author == null) return;
+            var author = await _authorServices.GetById(book.AuthorId);
+
+            if (author == null) return null;
 
             var authorBooks = await _bookRepository.GetAllByAuthorId(book.AuthorId);
 
             var titleForAuthorExist = authorBooks.Any(b => b.Title == book.Title);
 
-            if (titleForAuthorExist) return;
+            if (titleForAuthorExist) return null;
 
             await _bookRepository.Add(book);
 
+            return book;
         }
 
         public async Task<Book?> GetById(Guid id)
