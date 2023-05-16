@@ -1,6 +1,7 @@
 ﻿using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
+using BookStore.Models.Models.Requests;
 
 namespace BookStore.BL.Services
 {
@@ -13,6 +14,15 @@ namespace BookStore.BL.Services
             _userInfoRepository = userInfoRepository;
         }
 
+        public async Task Add(AddUserInfoRequest userInfo)
+        {
+            await _userInfoRepository.Add(new UserInfo()
+            {
+                Id = Guid.NewGuid(),
+                Username = userInfo.Email,
+                Password = userInfo.Password,
+            });
+        }
 
         public Task<UserInfo?> GetUserInfoAsync(string userName, string password)
         {
