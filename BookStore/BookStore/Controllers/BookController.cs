@@ -17,8 +17,9 @@ namespace BookStore.Controllers
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+       
         [HttpGet("GetAllBooks")]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var result = await _bookService.GetAll();
