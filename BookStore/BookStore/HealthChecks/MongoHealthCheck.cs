@@ -23,9 +23,9 @@ namespace BookStore.HealthChecks
             }
             catch (Exception ex)
             {
-                return HealthCheckResult.Unhealthy("MongoDB connection unhealthy");
+                return HealthCheckResult.Unhealthy("Connection with MongoDb is unhealthy");
             }
-            return HealthCheckResult.Healthy("MongoDB connection iz okay");
+            return HealthCheckResult.Healthy("Connection with MongoDb is okay");
         }
 
     }

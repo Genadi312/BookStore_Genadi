@@ -21,6 +21,7 @@ namespace BookStore.DL.Repositories.MongoDb
             {
                 GuidRepresentation = GuidRepresentation.Standard
             };
+
             _userInfo = database.GetCollection<UserInfo>(nameof(UserInfo), collectionSettings);
         }
 
@@ -28,7 +29,6 @@ namespace BookStore.DL.Repositories.MongoDb
         {
             var filterBuilder = Builders<UserInfo>.Filter;
             var filter = filterBuilder.Eq(entity => entity.Username, userName)& filterBuilder.Eq(entity => entity.Password, pasword);
-
             var item = _userInfo.Find(filter).FirstOrDefault();
             return Task.FromResult(item);
         }

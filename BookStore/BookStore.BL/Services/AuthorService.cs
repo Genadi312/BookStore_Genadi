@@ -23,8 +23,6 @@ namespace BookStore.BL.Services
             var author = _mapper.Map<Author>(authorRequest);
             author.Id = Guid.NewGuid();
             await _authorRepository.Add(author);
-
-            
         }
 
         public async Task Delete(Guid id)
