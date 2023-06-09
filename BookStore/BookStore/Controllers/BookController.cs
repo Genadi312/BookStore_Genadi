@@ -1,5 +1,6 @@
 ﻿using BookStore.BL.Interfaces;
 using BookStore.Models.Models;
+using BookStore.Models.Models.Requests.AddRequests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

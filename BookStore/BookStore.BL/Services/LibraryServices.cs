@@ -28,6 +28,7 @@ namespace BookStore.BL.Services
                 _logger.LogError($"GetAllByAuthorId error");
                 books = await _bookRepository.GetAllByAuthorId(authorId);
             }
+
             return new GetAllBooksByAuthorResponse()
             {
 
@@ -36,22 +37,20 @@ namespace BookStore.BL.Services
             };
             
         }
-
-
-
-        //public async Task <GetAllBooksByReleaseDate> GetAllBooksByReleaseDate(int releaseDate, Guid authorId)
-        //{
-        //    var author = _authorRepository.GetById(authorId);
-        //    var books = Enumerable.Empty<Book>();
-        //    if (releaseDate != null)
-        //    {
-        //        books = await _bookRepository.GetAllBooksByReleaseDate(releaseDate);
-        //    }
-        //    return new GetAllBooksByReleaseDate()
-        //    {
-        //        Author = await author,
-        //        Books = books
-        //    };
-        //}
+        
+        public async Task<GetAllBooksByReleaseYear> GetAllBooksByReleaseYear(int releaseYear, Guid authorId)
+        {
+            var author = _authorRepository.GetById(authorId);
+            var books = Enumerable.Empty<Book>();
+            if (releaseYear != null)
+            {
+                books = await _bookRepository.GetAllBooksByReleaseYear(releaseYear);
+            }
+            return new GetAllBooksByReleaseYear()
+            {
+                Author = await author,
+                Books = books
+            };
+        }
     }
 }

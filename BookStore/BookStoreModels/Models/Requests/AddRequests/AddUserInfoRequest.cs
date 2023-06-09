@@ -1,4 +1,4 @@
-﻿namespace BookStore.Models.Models.Requests
+﻿namespace BookStore.Models.Models.Requests.AddRequests
 {
     public class AddUserInfoRequest
     {

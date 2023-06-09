@@ -1,4 +1,4 @@
-﻿using BookStore.Models.Models.Requests;
+﻿using BookStore.Models.Models.Requests.AddRequests;
 using FluentValidation;
 
 namespace BookStore.Validators
@@ -14,7 +14,7 @@ namespace BookStore.Validators
             RuleFor(x => x.Bio.Length).GreaterThan(5)
                                       .WithMessage("Minimum 5 characters")
                                       .LessThan(10)
-                                      .WithMessage("Maximum 10 characters");
+                                      .WithMessage("Maximum 50 characters");
         }
     }
 }

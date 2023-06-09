@@ -1,8 +1,8 @@
-﻿namespace BookStore.Models.Models.Requests
+﻿namespace BookStore.Models.Models.Requests.UpdateRequests
 {
     public class UpdateAuthorRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 

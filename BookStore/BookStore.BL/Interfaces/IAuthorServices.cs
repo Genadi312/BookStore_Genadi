@@ -1,5 +1,6 @@
 ﻿using BookStore.Models.Models;
-using BookStore.Models.Models.Requests;
+using BookStore.Models.Models.Requests.AddRequests;
+using BookStore.Models.Models.Requests.UpdateRequests;
 
 namespace BookStore.BL.Interfaces
 {

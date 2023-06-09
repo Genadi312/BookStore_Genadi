@@ -1,7 +1,8 @@
 using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
-using BookStore.Models.Models.Requests;
+using BookStore.Models.Models.Requests.AddRequests;
+using BookStore.Models.Models.Requests.UpdateRequests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
@@ -13,7 +14,6 @@ namespace BookStore.Controllers
 
         private readonly ILogger<AuthorController> _logger;
         private readonly IAuthorServices _authorService;
-
 
         public AuthorController(ILogger<AuthorController> logger, IAuthorServices authorService)
         {

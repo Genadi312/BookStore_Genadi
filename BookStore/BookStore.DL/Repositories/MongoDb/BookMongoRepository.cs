@@ -20,8 +20,8 @@ namespace BookStore.DL.Repositories.MongoDb
             {
                 GuidRepresentation = GuidRepresentation.Standard
             };
-            _books = database
-                .GetCollection<Book>(nameof(Book), collectionSettings);
+
+            _books = database.GetCollection<Book>(nameof(Book), collectionSettings);
         }
 
         public async Task Add(Book book)
@@ -39,10 +39,10 @@ namespace BookStore.DL.Repositories.MongoDb
             return await _books.Find(book => true).ToListAsync();
         }
 
-        //public async Task<IEnumerable<Book>> GetAllBooksByReleaseDate(int releaseDate)
-        //{
-        //    return await _books.Find(x => x.ReleaseDate == releaseDate).ToListAsync();
-        //}
+        public async Task<IEnumerable<Book>> GetAllBooksByReleaseYear(int releaseYear)
+        {
+            return await _books.Find(x => x.ReleaseYear == releaseYear).ToListAsync();
+        }
 
         public async Task<IEnumerable<Book>> GetAllByAuthorId(Guid authorId)
         {
@@ -63,7 +63,6 @@ namespace BookStore.DL.Repositories.MongoDb
             var update = Builders<Book>.Update.Set(s => s.Title, book.Title);
             await _books.UpdateOneAsync(filter, update);
         }
-
 
     }
 }

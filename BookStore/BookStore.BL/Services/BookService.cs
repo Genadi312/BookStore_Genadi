@@ -1,4 +1,5 @@
-﻿using BookStore.BL.Interfaces;
+﻿using AutoMapper;
+using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
 
@@ -8,31 +9,22 @@ namespace BookStore.BL.Services
     {
         public readonly IBookRepository _bookRepository;
         public readonly IAuthorServices _authorServices;
+        private readonly IMapper _mapper;
 
 
-        public BookService(IAuthorServices authorServices, IBookRepository bookRepository)
+        public BookService(IAuthorServices authorServices, IBookRepository bookRepository, IMapper mapper)
         {
             _authorServices = authorServices;
             _bookRepository = bookRepository;
+            _mapper = mapper;
+
         }
 
-        public async Task<Book?> Add(Book book)
+        public async Task Add(Book books)
         {
+            var book = _mapper.Map<Book>(books);
             book.Id = Guid.NewGuid();
-
-            var author = await _authorServices.GetById(book.AuthorId);
-
-            if (author == null) return null;
-
-            var authorBooks = await _bookRepository.GetAllByAuthorId(book.AuthorId);
-
-            var titleForAuthorExist = authorBooks.Any(b => b.Title == book.Title);
-
-            if (titleForAuthorExist) return null;
-
             await _bookRepository.Add(book);
-
-            return book;
         }
 
         public async Task<Book?> GetById(Guid id)

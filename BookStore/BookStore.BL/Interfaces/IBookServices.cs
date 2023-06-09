@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookStore.Models.Models;
+using BookStore.Models.Models.Requests.AddRequests;
 
 namespace BookStore.BL.Interfaces
 {
@@ -13,7 +14,7 @@ namespace BookStore.BL.Interfaces
 
         Task <Book?> GetById(Guid id);
 
-        Task <Book?>Add(Book author);
+        Task Add(Book book);
 
         Task Update(Book book);
 
