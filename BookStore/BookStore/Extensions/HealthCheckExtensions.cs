@@ -21,9 +21,9 @@ namespace BookStore.Extensions
                             Component = x.Key,
                             Status = x.Value.Status.ToString(),
                             Description = x.Value.Description
-                        }),
-                       HealthCheckDuration = report.TotalDuration
+                        }),HealthCheckDuration = report.TotalDuration
                     };
+
                     await context.Response.WriteAsync(JsonConvert.SerializeObject(response,Formatting.Indented));
                 }
             });

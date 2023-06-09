@@ -20,8 +20,8 @@ namespace BookStore.DL.Repositories.MongoDb
             {
                 GuidRepresentation = GuidRepresentation.Standard
             };
-            _authors = database
-                .GetCollection<Author>(nameof(Author), collectionSettings);
+
+            _authors = database.GetCollection<Author>(nameof(Author), collectionSettings);
         }
 
 

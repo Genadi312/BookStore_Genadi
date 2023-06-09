@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookStore.Models.Models;
+﻿using BookStore.Models.Models;
 
 namespace BookStore.DL.Interfaces
 {
@@ -21,6 +16,6 @@ namespace BookStore.DL.Interfaces
 
         Task <IEnumerable<Book>> GetAllByAuthorId(Guid authorId);
 
-        //Task <IEnumerable<Book>> GetAllBooksByReleaseDate(int releaseDate);
+        Task<IEnumerable<Book>> GetAllBooksByReleaseYear(int releaseYear);
     }
 }

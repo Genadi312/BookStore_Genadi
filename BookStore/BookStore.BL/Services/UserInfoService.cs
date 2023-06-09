@@ -1,7 +1,7 @@
 ﻿using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
-using BookStore.Models.Models.Requests;
+using BookStore.Models.Models.Requests.AddRequests;
 
 namespace BookStore.BL.Services
 {

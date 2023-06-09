@@ -3,7 +3,8 @@ using AutoMapper;
 using BookStore.BL.Interfaces;
 using BookStore.DL.Interfaces;
 using BookStore.Models.Models;
-using BookStore.Models.Models.Requests;
+using BookStore.Models.Models.Requests.AddRequests;
+using BookStore.Models.Models.Requests.UpdateRequests;
 
 namespace BookStore.BL.Services
 {

@@ -4,7 +4,7 @@ using System.Text;
 using BookStore.BL.Interfaces;
 using BookStore.BL.Services;
 using BookStore.Models.Models;
-using BookStore.Models.Models.Requests;
+using BookStore.Models.Models.Requests.AddRequests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -59,8 +59,6 @@ namespace BookStore.Controllers
                     new Claim("View", "Employee"),
                 };
 
-
-
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
                 var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(
@@ -73,10 +71,11 @@ namespace BookStore.Controllers
                 return Ok(new JwtSecurityTokenHandler().WriteToken(token));
 
             }
+
             else
             {
                 return BadRequest("Invalid credentials");
-                 }
+            }
 
         }
     }

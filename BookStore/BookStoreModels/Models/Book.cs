@@ -12,6 +12,6 @@ namespace BookStore.Models.Models
 
         public Guid AuthorId { get; set; }
 
-        //public int ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
     }
 }

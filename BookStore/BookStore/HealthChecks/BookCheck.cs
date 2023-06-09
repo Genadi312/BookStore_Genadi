@@ -21,10 +21,12 @@ namespace BookStore.HealthChecks
             {
                 var client = new MongoClient(_mongoConfig.CurrentValue.ConnectionString);
             }
+
             catch (Exception ex)
             {
                 return HealthCheckResult.Unhealthy("Book bad");
             }
+
             return HealthCheckResult.Healthy("Book OK");
         }
     }
